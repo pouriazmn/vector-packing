@@ -16,7 +16,7 @@ class FirstFitDecreasing:
     def solve(self, strategy, **kwargs):
         if strategy == self.__class__.KEY_DIM:
             dim = kwargs.pop("dim")
-            sorted_sigma = sorted(self.sigma, key=self.key_dim_key(dim), reverse=True)
+            sorted_sigma = sorted(self.sigma, key=self.key_dim_sort_key(dim), reverse=True)
         else:
             raise NotImplementedError
 
@@ -33,7 +33,7 @@ class FirstFitDecreasing:
         return self.first_fit.solution
 
     @staticmethod
-    def key_dim_key(dim):
+    def key_dim_sort_key(dim):
         def func(item: Item):
             return item.size[dim]
         return func
