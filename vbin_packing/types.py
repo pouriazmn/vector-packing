@@ -72,6 +72,9 @@ class Item:
     def size(self):
         return self._size
 
+    def __repr__(self):
+        return f"<Item, size: {repr(self.size)} >"
+
 
 class Bin:
 
@@ -111,6 +114,13 @@ class Bin:
     @property
     def size_count(self):
         return dict(self._size_count)
+
+    def __repr__(self):
+        sizes = []
+        for size, value in self._size_count.items():
+            sizes.append(f"{size} : {value}")
+        items = ",\n".join(sizes)
+        return f"[Bin: \n{items}\n]"
 
 
 
